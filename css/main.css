@@ -3,6 +3,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
+  height: auto;
 }
 
 ul, li, p, h1, h2, h3, h4, h5, h6, form {
@@ -19,7 +20,8 @@ a {
   display: block;
 }
 .card {
-  width: 45%;
+  width: calc(50% - 40px);
+  margin: 20px;
   box-shadow: 1px 1px 10px #555;
 
 }
@@ -53,9 +55,8 @@ a {
 .buttons a {
   display: inline-block;
   text-transform: uppercase;
-  font-size: 25px;
+  font-size: 2em;
   position: relative;
-  transform: translateY(-50%);
   top: 50%;
   cursor: pointer;
 }
@@ -68,7 +69,6 @@ a {
 
 /* Book Styles */
 .book {
-  height: 250px;
   float: left;
 }
 
@@ -79,9 +79,7 @@ a {
 }
 
 .book__image img {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+  max-width: 100%;
 }
 
 .book__info {
@@ -234,8 +232,21 @@ input.error {
   font-weight: 200;
 }
 
+@media (min-width: 900px) and (max-width: 1250px) {
+  .content h1 {
+    font-size: 2em;
+  }
 
-@media (max-width: 720px) {
+  .content h2 {
+    font-size: 1.5em;
+  }
+
+  .buttons a {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 900px) {
   .nav-icon {
     display: block;
   }
@@ -256,6 +267,19 @@ input.error {
 
   #main-nav li:last-child {
     border: none;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 700px;
+  }
+
+  .book {
+    float: none;
+  }
+
+  .article {
+    float: none;
   }
 
 }
