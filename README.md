@@ -1,5 +1,5 @@
 # UI Design Challenge 
-UI Design Challenge using no third part JS libaries 
+UI Design Challenge using no third party JS libaries 
 
 Component Tree 
 <pre>
