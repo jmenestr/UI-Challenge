@@ -1,4 +1,5 @@
 (function(root){
+  'use strict';
   root.StarRating = function(opts, clickHandler) {
     // Options takes a rating, a max number of stars, 
     // and a readOnly flag

@@ -1,4 +1,5 @@
 (function(root){
+  'use strict';
   root.NavBar = function(links) {
     // Takes in array of links (or titles) for the nav bar 
     this.links = links;

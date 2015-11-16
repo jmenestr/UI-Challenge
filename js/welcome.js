@@ -1,4 +1,5 @@
 (function(root){
+  'use strict';
   root.Welcome = function(addBook) {
     this.section = document.createElement('section');
     this.section.className = 'card';

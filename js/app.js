@@ -117,5 +117,4 @@
     // Reassign the pointer to the new nav bar objectå
     this.navBar = newNav;
   }
-
 })(this)
