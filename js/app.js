@@ -46,7 +46,7 @@
   App.prototype._renderWelcome = function() {
     this.welcome = 
       new root.Welcome(this._addBook.bind(this));
-      this.leftw.appendChild(this.welcome.render());
+      this.left.appendChild(this.welcome.render());
   };
 
   App.prototype._renderBooks = function() {

@@ -3,7 +3,7 @@
   root.StarRating = function(opts, clickHandler) {
     // Options takes a rating, a max number of stars, 
     // and a readOnly flag
-    defaults = {
+    var defaults = {
       readOnly: true,
       rating: 3,
       max: 5
