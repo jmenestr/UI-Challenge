@@ -2,11 +2,13 @@
 
   'use strict';
 
-  root.Book = function(book) {
+  root.Book = function(book, addReview) {
     // Book class to hold a passed in json representation of the book
     this.title = book.title; 
     this.author = book.author;
     this.image = book.image;
+    this.addReview = addReview;
+    this.rating = book.rating
     this.section = document.createElement('section');
 
   };
@@ -47,6 +49,7 @@
     // render title and author 
     this._renderTitle(content);
     this._renderAuthor(content);
+    this._renderAvgRating(content);
     parent.appendChild(content);
 
   };
@@ -64,16 +67,44 @@
     parent.appendChild(author);
   };
 
+  Book.prototype._renderAvgRating = function(parent) {
+    var avgRating = new root.StarRating({ readOnly: true, rating: this.rating })
+    parent.appendChild(avgRating.render());
+  }
+
   Book.prototype._renderButtons = function(parent) {
-    var btns = new Buttons('Free Sample', 'Review');
-    parent.appendChild(btns._render());
+    var button_container = document.createElement('div');
+    button_container.className = 'buttons'; 
+    var sample = document.createElement('a');
+    sample.innerHTML = 'Free Sample';
+    var review = document.createElement('a');
+    review.innerHTML = 'Review';
+    review.addEventListener('click', this._handeReviewClick.bind(this));
+    // Add buttons to container and container to parent
+    button_container.appendChild(sample);
+    button_container.appendChild(review);
+    parent.appendChild(button_container);
   };
+
+  Book.prototype._handeReviewClick = function() {
+    var reviewForm = new ReviewForm(this.addReview);
+    // Only add form if there isn't already a form
+    if (!this.section.querySelector('.review-form')) {
+      this.section.appendChild(reviewForm.render());      
+    }
+  };
+  Book.prototype.sectionContainer = function() {
+    // return section for easy swapping when reviews are updated
+    return this.section;
+  };
+  
 })(this)
 
 book = { 
   title: "Dogs!",
   author: "justin",
-  image: "http://www.graphics20.com/wp-content/uploads/2012/12/Funny-Dog-34.jpg"
+  image: "http://www.graphics20.com/wp-content/uploads/2012/12/Funny-Dog-34.jpg",
+  reviews: [1,2,3]
 }
 
 

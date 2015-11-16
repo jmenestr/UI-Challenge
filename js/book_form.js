@@ -1,8 +1,9 @@
 (function(root){
   'use strict';
-  root.BookForm = function() {
+  root.BookForm = function(addBook) {
     this.section = document.createElement('section');
     this.section.className = 'book-form card';
+    this.addBook = addBook;
   };
 
   BookForm.prototype.render = function() {
@@ -72,15 +73,26 @@
   };
 
   BookForm.prototype._handleUpload = function() {
+    // Find input field for file
     var input = document.querySelector('#book-cover');
     
-
+    // Check to see if files exist
     if (input.files && input.files[0]) {
+      // Creae a new FileReader that will read file and 
+      // convert it to base64 string
       var reader = new FileReader();
-      this.fileName = input.files[0].name;
+      // Truncate file name so it dosen't overflow storage string limit
+      this.fileName = 'upload'
+
       reader.onload = function (e) {
-          localStorage.setItem(this.fileName, e.target.result)
+        // Store locally so it can be set as the url image in a new book object
+        try {
+          localStorage.setItem(this.fileName, e.target.result);     
+        } catch(e) {
+          alert("Something went wrong while saving the file to local storate. Please try again");
+        }
       }.bind(this)
+      // Read data is base64 string
       reader.readAsDataURL(input.files[0]);
     }
   };
@@ -92,10 +104,12 @@
         document.querySelector('#title').value;
       book.author = 
         document.querySelector('#author').value;
+        // Grab image from local storage and set as image 
+        // url in new book object
       book.image = localStorage.getItem(this.fileName);
-      var newBook = new Book(book);
-      this.section.parentNode.removeChild(this.section);
-      document.body.appendChild(newBook.render());
+      // Delegate adding new book to top level app with a passed down
+      // function. This keeps all data/DOM maniuplation at the top level
+      this.addBook(book, this.section);
     }
   };
 

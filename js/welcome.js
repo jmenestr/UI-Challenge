@@ -1,8 +1,9 @@
 (function(root){
-  root.Welcome = function() {
+  root.Welcome = function(addBook) {
     this.section = document.createElement('section');
     this.section.className = 'card';
     this.section.id = 'welcome';
+    this.addBook = addBook;
   };
 
   Welcome.prototype.render = function() {
@@ -55,8 +56,8 @@
 
   Welcome.prototype._handleYesClick = function(e) {
     e.preventDefault();
-    var bookForm = new BookForm();
-    document.body.replaceChild(bookForm.render(), this.section);
+    var bookForm = new BookForm(this.addBook);
+    this.section.parentNode.replaceChild(bookForm.render(), this.section);
   };
 
 })(this)

@@ -77,14 +77,17 @@
     // Create a new buttons component 
     // and append to the main section of the 
     // Article component 
-    var btns = new Buttons('Share', 'Explore');
-    parent.appendChild(btns._render());
+    var btns = ['Share','Explore']
+    // Construct a container to hold the buttons
+    var button_container = document.createElement('div');
+    button_container.className = 'buttons'; 
+    // Iterate over buttons array and append each to the button_container
+    btns.forEach(function(button){
+      var btn = document.createElement('a');
+      btn.innerHTML = button;
+      button_container.appendChild(btn);
+    });
+    parent.appendChild(button_container); 
   };
-})(this)
 
-article = { 
-  title: "Top 10 Beaches!",
-  sub_title: "Number 10",
-  text: "Check out the top 10 beaches around the world. We go to south america and eroupe",
-  image: "http://i2.cdn.turner.com/cnnnext/dam/assets/130523110119-best-beaches-13-perhentian-horizontal-large-gallery.jpg"
-}
+})(this)

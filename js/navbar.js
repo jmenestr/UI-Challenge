@@ -64,9 +64,11 @@
   NavBar.prototype._reset = function() {
     // Reset function to prevet dublicate data if render is called more than once
     this.nav.innerHTML = "";
-  }
+  };
+
+  NavBar.prototype.sectionContainer = function() {
+    // return section for easy swapping when the navbar is updated 
+    return this.nav;
+  };
 
 })(this)
-
-
-titles = ["title1", "title2", "title3"]
