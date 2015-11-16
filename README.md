@@ -1,7 +1,7 @@
 # UI Design Challenge 
 
 Component Tree 
-
+<pre>
 App
 |
 |--Navbar
@@ -19,7 +19,7 @@ App
 |
 |
 |--Article
-
+</pre>
 
 ## Design Overview 
 
