@@ -8,7 +8,7 @@
     this.author = book.author;
     this.image = book.image;
     this.addReview = addReview;
-    this.rating = book.rating
+    this.rating = book.rating || 0;
     this.section = document.createElement('section');
 
   };
@@ -100,12 +100,7 @@
   
 })(this)
 
-book = { 
-  title: "Dogs!",
-  author: "justin",
-  image: "http://www.graphics20.com/wp-content/uploads/2012/12/Funny-Dog-34.jpg",
-  reviews: [1,2,3]
-}
+
 
 
 

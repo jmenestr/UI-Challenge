@@ -63,15 +63,15 @@
     // If it does not, proceed, else, alet the user it exists
     if (this.titles.indexOf(newBook.title) === -1) {
       // Remove the welcome componenet from the DOM 
-      this.parent.removeChild(form);
+      form.parentNode.removeChild(form);
       // Create a new book componenet from the newBook json object
-      var newBook = new root.Book(newBook);
+      var bookComp = new root.Book(newBook, this._addReview.bind(this, newBook));
       // Add new book to the stored json array of books 
-      this.books.push(newBook);
+      this.data.books.push(newBook);
       // Add new title to the titles array for the navBar 
       this.titles.push(newBook.title);
       // Add book component to the parent div of the application
-      this.left.appendChild(newBook.render())
+      this.left.appendChild(bookComp.render())
       this._updateNav();
     } else {
       alert("You can't add the same book twice!");

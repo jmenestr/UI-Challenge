@@ -5,7 +5,7 @@
     // and a readOnly flag
     var defaults = {
       readOnly: true,
-      rating: 3,
+      rating: 0,
       max: 5
     };
     this._handleClick = clickHandler;

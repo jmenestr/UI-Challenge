@@ -99,7 +99,7 @@
   BookForm.prototype._handleSubmit = function(e) {
     e.preventDefault();
     if (this._isFormValid()) {
-      var book = {};
+      var book = {reviews: [], rating: 0};
       book.title =  
         document.querySelector('#title').value;
       book.author = 

@@ -249,6 +249,11 @@ input.error {
   box-shadow: 1px 1px 15px red;
 }
 
+/* Review Form */
+.review-form {
+  clear: both;
+}
+
 /* Star Rating Styles */
 
 .star-rating {
